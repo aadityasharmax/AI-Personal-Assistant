@@ -10,6 +10,7 @@ import image7 from "../assets/image7.jpeg"
 import { LuImagePlus } from "react-icons/lu";
 import {userDataContext} from '../context/UserContext.jsx'
 import { useNavigate } from "react-router-dom";
+import { IoIosArrowRoundBack } from "react-icons/io";
 
 const Customize = () => {
   const navigate = useNavigate()
@@ -25,7 +26,11 @@ const Customize = () => {
 
 
   return (
-    <div className='w-full h-screen bg-linear-to-t from-[black] to-[#1408ff] flex justify-center items-center flex-col p-5 gap-5'>
+    <div className='w-full h-screen bg-linear-to-t from-[black] to-[#1408ff] flex justify-center items-center flex-col p-5 gap-5 relative'>
+
+      <IoIosArrowRoundBack className='absolute top-[30px] left-[30px] text-white cursor-pointer w-[25px] h-[25px] '
+            onClick={() => navigate('/')}
+            />
 
         <h1 className='text-white text-[30px] text-center mb-6'>Select your <span className='text-purple-500 font-bold'>AI Assistant</span> Image</h1>
 

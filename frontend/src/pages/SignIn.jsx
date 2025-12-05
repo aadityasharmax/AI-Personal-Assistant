@@ -29,7 +29,9 @@ const SignIn = () => {
         { withCredentials: true }
       );
       navigate("/")
-      setUserData(result.data);
+      setUserData(result.data.user);
+      console.log("after login setUserData:", result.data.user);
+
       setLoading(false);
     } catch (error) {
       console.log(error);

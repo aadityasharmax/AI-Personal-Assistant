@@ -28,7 +28,7 @@ const SignUp = () => {
             password
         },{withCredentials:true})
 
-        setUserData(result.data)
+        setUserData(result.data.user)
         setLoading(false)
         navigate("/customize")
     } catch (error) {

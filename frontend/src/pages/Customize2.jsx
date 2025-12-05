@@ -1,10 +1,13 @@
 import React, { useContext, useState } from 'react'
 import { userDataContext } from '../context/UserContext.jsx'
 import axios from "axios"
+import { IoIosArrowRoundBack } from "react-icons/io";
+import { useNavigate } from 'react-router-dom';
 
 const Customize2 = () => {
     const {userData,  backendImage,selectedImage, serverUrl,setUserData} = useContext(userDataContext)
     const [assistantName,setAssistantName] = useState(userData?.assistantName || "")
+    const navigate = useNavigate()
 
     const handleUpdateAssistant = async() => {
       try {
@@ -27,7 +30,11 @@ const Customize2 = () => {
 
     
   return (
-    <div className='w-full h-screen bg-linear-to-t from-[black] to-[#1408ff] flex justify-center items-center flex-col p-5 gap-5'>
+    <div className='w-full h-screen bg-linear-to-t from-[black] to-[#1408ff] flex justify-center items-center flex-col p-5 gap-5 relative'>
+
+      <IoIosArrowRoundBack className='absolute top-[30px] left-[30px] text-white cursor-pointer w-[25px] h-[25px] '
+      onClick={() => navigate('/customize')}
+      />
     
     <h1 className='text-white text-[30px] text-center mb-6'>Enter your <span className='text-purple-500 font-bold'>AI Assistant</span> Name</h1>
 
@@ -42,7 +49,10 @@ const Customize2 = () => {
         />
 
         {assistantName && <button className="min-w-[250px] h-[60px] bg-white rounded-full text-black font-semibold text-[19px] cursor-pointer mb-4"
-        onClick={() => handleUpdateAssistant()}
+        onClick={() => {
+          handleUpdateAssistant()
+          navigate('/')
+        }}
         >
             Create Assistant
         </button>}
